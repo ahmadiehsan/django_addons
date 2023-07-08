@@ -1,0 +1,2 @@
+from django_addons.notification_helper.admin.email_recipient_log import EmailRecipientLogInline
+from django_addons.notification_helper.admin.email_log import EmailLogAdmin

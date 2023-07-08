@@ -1,0 +1,1 @@
+from django_addons.user_management.admin.verification_code import VerificationCodeAdmin

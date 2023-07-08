@@ -1,0 +1,11 @@
+{% extends 'notification_helper/email_base.html' %}
+{% load static i18n %}
+
+{% block content %}
+    <h1>{% trans "Your email verification code" %}</h1>
+    <p>{% trans "To verify your new email please use the following code" %}</p>
+    <h2>{{ verification_code }}</h2>
+    <p style="color: #686868">
+        {% trans "This code will expire in 1 day. If you did not make this request, please disregard this email." %}
+    </p>
+{% endblock %}

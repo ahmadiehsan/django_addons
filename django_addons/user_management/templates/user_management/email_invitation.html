@@ -1,0 +1,12 @@
+{% extends 'notification_helper/email_base.html' %}
+{% load static i18n %}
+
+{% block content %}
+    <h1>{% trans "Your account invitation code" %}</h1>
+    <p>{% trans "To accept the invitation please use the following code and URL" %}</p>
+    <h3><a href="{{ invitation_link }}">{% trans "Click here and enter the below code" %}</a></h3>
+    <h2>{{ invitation_code }}</h2>
+    <p style="color: #686868">
+        {% trans "This code will expire in 5 days. If you don't want this invitation, please disregard this email." %}
+    </p>
+{% endblock %}
