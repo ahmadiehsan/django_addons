@@ -255,3 +255,4 @@ source venv/bin/activate
 - `./run pre_commit.init`
 - `./run pre_commit.run_for_all`
 - `./run requirements.compile`
+- `./run requirements.install.dev`
