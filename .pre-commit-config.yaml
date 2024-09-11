@@ -17,6 +17,19 @@ repos:
       - id: check-merge-conflict
       - id: double-quote-string-fixer
 
+  - repo: https://github.com/scop/pre-commit-shfmt
+    rev: v3.9.0-1
+    hooks:
+      - id: shfmt
+        args: [ --indent, '2', --write ]
+        stages: [ commit ]
+
+  - repo: https://github.com/mrtazz/checkmake.git
+    rev: 0.2.2
+    hooks:
+      - id: checkmake
+        args: [ --config, './.checkmake.ini' ]
+
   - repo: https://github.com/MarcoGorelli/absolufy-imports
     rev: v0.3.1
     hooks:
