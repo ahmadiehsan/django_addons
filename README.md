@@ -247,12 +247,9 @@ cd django_addons
 
 virtualenv -p python3.10 venv
 source venv/bin/activate
-./run requirements.install.dev
+make requirements.install
 ```
 
 ### Available Commands
 
-- `./run pre_commit.init`
-- `./run pre_commit.run_for_all`
-- `./run requirements.compile`
-- `./run requirements.install.dev`
+- `make help`
