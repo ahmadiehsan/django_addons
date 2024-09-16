@@ -36,8 +36,8 @@ class UserForgotPasswordService:
         return verification_code.code
 
     def _send_email(self, email, code):
-        subject = _('Forgot Password Code')
+        subject = _("Forgot Password Code")
         html_message, plain_message = self.email_template_service.render(
-            'user_management/email_forgot_password.html', {'forgot_password_code': code}
+            "user_management/email_forgot_password.html", {"forgot_password_code": code}
         )
         self.email_service.send(self.email_service.SendDTO(subject, html_message, plain_message, [email]))

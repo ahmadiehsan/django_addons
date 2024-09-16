@@ -2,12 +2,12 @@ exclude: ^(requirements|.*static|.*assets|.*migrations|.*__init__.py|setup.py)
 default_stages: [ commit ]
 repos:
   - repo: https://github.com/jorisroovers/gitlint
-    rev: v0.17.0
+    rev: v0.19.1
     hooks:
       - id: gitlint
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.3.0
+    rev: v4.6.0
     hooks:
       - id: check-yaml
       - id: end-of-file-fixer
@@ -15,7 +15,6 @@ repos:
       - id: trailing-whitespace
         stages: [ commit ]
       - id: check-merge-conflict
-      - id: double-quote-string-fixer
 
   - repo: https://github.com/scop/pre-commit-shfmt
     rev: v3.9.0-1
@@ -30,47 +29,20 @@ repos:
       - id: checkmake
         args: [ --config, './.checkmake.ini' ]
 
-  - repo: https://github.com/MarcoGorelli/absolufy-imports
-    rev: v0.3.1
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.6.3
     hooks:
-      - id: absolufy-imports
-        args: [
-          --application-directories, '.'
-        ]
-
-  - repo: https://github.com/pycqa/isort
-    rev: 5.12.0
-    hooks:
-      - id: isort
-        args: [
-          --multi-line, VERTICAL_HANGING_INDENT,
-          --trailing-comma,
-          --line-length, '120'
-        ]
-
-  - repo: https://github.com/psf/black
-    rev: 22.3.0
-    hooks:
-      - id: black
-        args: [
-          --skip-string-normalization,
-          --skip-magic-trailing-comma,
-          --line-length, '120'
-        ]
+      - id: ruff
+        args: [ --fix ]
+      - id: ruff-format
 
   - repo: https://github.com/pycqa/bandit
-    rev: 1.7.4
+    rev: 1.7.9
     hooks:
       - id: bandit
-        args: [ -ll ]
+        args: [ -r, '.' ]
 
   - repo: https://github.com/pycqa/pylint
-    rev: v2.15.3
+    rev: v3.2.7
     hooks:
       - id: pylint
-        args: [
-          --disable, 'missing-module-docstring,missing-class-docstring,missing-function-docstring,import-error,fixme,duplicate-code,too-few-public-methods',
-          --max-line-length, '120',
-          --py-version, '3.10',
-          --ignore-patterns, '\d{4}_.*?.py',  # ignore django migrations
-        ]

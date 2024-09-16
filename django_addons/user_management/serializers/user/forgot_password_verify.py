@@ -14,26 +14,26 @@ User = get_user_model()
 
 class UserForgotPasswordVerifySerializer(PasswordSerializerMixin, serializers.Serializer):
     code = serializers.SlugRelatedField(
-        source='verification_code',
+        source="verification_code",
         write_only=True,
         queryset=VerificationCodeQueryRepository.get_all_not_expired(VerificationCode.Action.FORGET),
-        slug_field='code',
+        slug_field="code",
     )
 
     class Meta:
-        fields = ('code',) + PasswordSerializerMixin.Meta.fields
+        fields = ("code",) + PasswordSerializerMixin.Meta.fields
 
     def create(self, validated_data):
-        verification_code = validated_data['verification_code']
+        verification_code = validated_data["verification_code"]
 
         with transaction.atomic():
             VerificationCodeCommandRepository.use(verification_code)
-            UserChangePasswordService().change_password(verification_code.user, validated_data['password'])
+            UserChangePasswordService().change_password(verification_code.user, validated_data["password"])
 
         return verification_code
 
     def update(self, instance, validated_data):
-        raise NotImplementedError()
+        raise NotImplementedError
 
     def to_representation(self, instance):  # pylint: disable=unused-argument
-        return {'detail': _('The password has been updated successfully')}
+        return {"detail": _("The password has been updated successfully")}

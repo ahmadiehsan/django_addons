@@ -7,4 +7,4 @@ from django_addons.user_management.serializers.user.invitation import UserInvita
 
 class UserInvitationView(mixins.CreateModelMixin, GenericViewSet):
     serializer_class = UserInvitationSerializer
-    permission_classes = USER_MANAGEMENT_OPTIONS.apis['user']['invitation']['permission_classes']
+    permission_classes = USER_MANAGEMENT_OPTIONS.apis["user"]["invitation"]["permission_classes"]

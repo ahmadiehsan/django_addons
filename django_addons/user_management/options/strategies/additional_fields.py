@@ -3,4 +3,4 @@ from django_addons.user_management.options.strategies.interface import IOptionSt
 
 class AdditionalFieldsOptionStrategy(IOptionStrategy):
     def fill_options(self):
-        return {'user': tuple(self._get('additional_fields.user', {}).keys())}
+        return {"user": tuple(self._get("additional_fields.user", {}).keys())}

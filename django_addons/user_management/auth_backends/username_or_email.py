@@ -38,7 +38,7 @@ class UsernameOrEmailAuthBackend(ModelBackend):
 
     @staticmethod
     def _check_user_password(user, kwargs):
-        return user.check_password(kwargs.get('password', None))
+        return user.check_password(kwargs.get("password", None))
 
     @staticmethod
     def _raise_if_user_is_not_active(user):

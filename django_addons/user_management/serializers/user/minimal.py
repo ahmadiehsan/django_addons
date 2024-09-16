@@ -9,7 +9,7 @@ User = get_user_model()
 class UserMinimalSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'first_name', 'last_name') + USER_MANAGEMENT_OPTIONS.additional_fields[
-            'user'
+        fields = ("id", "username", "email", "first_name", "last_name") + USER_MANAGEMENT_OPTIONS.additional_fields[
+            "user"
         ]
         read_only = True

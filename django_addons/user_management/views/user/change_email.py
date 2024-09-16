@@ -7,4 +7,4 @@ from django_addons.user_management.serializers.user.change_email import UserChan
 
 class UserChangeEmailView(OKModelMixin, GenericViewSet):
     serializer_class = UserChangeEmailSerializer
-    permission_classes = USER_MANAGEMENT_OPTIONS.apis['user']['change_email']['permission_classes']
+    permission_classes = USER_MANAGEMENT_OPTIONS.apis["user"]["change_email"]["permission_classes"]

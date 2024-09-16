@@ -14,8 +14,8 @@ class PasswordSerializerMixin(metaclass=SerializerMetaclass):
     confirm_password = serializers.CharField(write_only=True)
 
     def validate(self, attrs):
-        if attrs['password'] != attrs['confirm_password']:
-            raise ValidationError(_('Passwords are not equal'))
+        if attrs["password"] != attrs["confirm_password"]:
+            raise ValidationError(_("Passwords are not equal"))
 
         return attrs
 
@@ -24,9 +24,9 @@ class PasswordSerializerMixin(metaclass=SerializerMetaclass):
         try:
             validate_password(password)
         except DjangoValidationError as err:
-            raise ValidationError(_('Unacceptable password')) from err
+            raise ValidationError(_("Unacceptable password")) from err
 
         return password
 
     class Meta:
-        fields = ('password', 'confirm_password')
+        fields = ("password", "confirm_password")

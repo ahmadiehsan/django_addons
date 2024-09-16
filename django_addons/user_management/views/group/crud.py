@@ -7,7 +7,7 @@ from django_addons.user_management.serializers.group.crud import GroupCRUDSerial
 
 class GroupCRUDView(ModelViewSet):
     serializer_class = GroupCRUDSerializer
-    permission_classes = USER_MANAGEMENT_OPTIONS.apis['group']['crud']['permission_classes']
+    permission_classes = USER_MANAGEMENT_OPTIONS.apis["group"]["crud"]["permission_classes"]
 
     def get_queryset(self):
-        return Group.objects.prefetch_related('permissions').all()
+        return Group.objects.prefetch_related("permissions").all()

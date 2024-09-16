@@ -78,12 +78,12 @@ class UserInvitationService:
         return verification_code.code
 
     def _send_email(self, email, code):
-        subject = _('Invitation')
+        subject = _("Invitation")
         html_message, plain_message = self.email_template_service.render(
-            'user_management/email_invitation.html',
+            "user_management/email_invitation.html",
             {
-                'invitation_code': code,
-                'invitation_link': USER_MANAGEMENT_OPTIONS.email_data['invitation_acceptance_link'],
+                "invitation_code": code,
+                "invitation_link": USER_MANAGEMENT_OPTIONS.email_data["invitation_acceptance_link"],
             },
         )
         self.email_service.send(self.email_service.SendDTO(subject, html_message, plain_message, [email]))

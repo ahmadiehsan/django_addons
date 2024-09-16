@@ -15,40 +15,40 @@ User = get_user_model()
 
 class UserInvitationVerifySerializer(PasswordSerializerMixin, serializers.ModelSerializer):
     code = serializers.SlugRelatedField(
-        source='verification_code',
+        source="verification_code",
         write_only=True,
         queryset=VerificationCodeQueryRepository.get_all_not_expired(VerificationCode.Action.INVITE),
-        slug_field='code',
+        slug_field="code",
     )
 
     class Meta:
         model = User
         fields = (
-            ('id', 'username', 'first_name', 'last_name', 'code')
+            ("id", "username", "first_name", "last_name", "code")
             + PasswordSerializerMixin.Meta.fields
-            + USER_MANAGEMENT_OPTIONS.additional_fields['user']
+            + USER_MANAGEMENT_OPTIONS.additional_fields["user"]
         )
 
     def create(self, validated_data):
-        verification_code = validated_data['verification_code']
+        verification_code = validated_data["verification_code"]
 
         with transaction.atomic():
             VerificationCodeCommandRepository.use(verification_code)
             UserInvitationService().accept(
                 UserInvitationService.AcceptDTO(
                     verification_code.user,
-                    validated_data['username'],
-                    validated_data.get('first_name', ''),
-                    validated_data.get('last_name', ''),
-                    validated_data['password'],
-                    {field: validated_data.get(field) for field in USER_MANAGEMENT_OPTIONS.additional_fields['user']},
+                    validated_data["username"],
+                    validated_data.get("first_name", ""),
+                    validated_data.get("last_name", ""),
+                    validated_data["password"],
+                    {field: validated_data.get(field) for field in USER_MANAGEMENT_OPTIONS.additional_fields["user"]},
                 )
             )
 
         return verification_code
 
     def update(self, instance, validated_data):
-        raise NotImplementedError()
+        raise NotImplementedError
 
     def to_representation(self, instance):  # pylint: disable=unused-argument
-        return {'detail': _('The account was updated and activated successfully')}
+        return {"detail": _("The account was updated and activated successfully")}

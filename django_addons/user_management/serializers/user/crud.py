@@ -10,13 +10,13 @@ class UserCRUDSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = (
-            'id',
-            'username',
-            'email',
-            'first_name',
-            'last_name',
-            'is_active',
-            'is_staff',
-            'is_superuser',
-        ) + USER_MANAGEMENT_OPTIONS.additional_fields['user']
-        read_only_fields = ('username', 'email', 'is_active', 'is_staff', 'is_superuser')
+            "id",
+            "username",
+            "email",
+            "first_name",
+            "last_name",
+            "is_active",
+            "is_staff",
+            "is_superuser",
+        ) + USER_MANAGEMENT_OPTIONS.additional_fields["user"]
+        read_only_fields = ("username", "email", "is_active", "is_staff", "is_superuser")

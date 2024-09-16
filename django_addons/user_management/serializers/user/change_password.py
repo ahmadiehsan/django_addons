@@ -17,13 +17,13 @@ class UserChangePasswordSerializer(
         fields = CurrentPasswordSerializerMixin.Meta.fields + PasswordSerializerMixin.Meta.fields
 
     def create(self, validated_data):
-        user = self.context['request'].user
-        UserChangePasswordService().change_password(user, validated_data['password'])
+        user = self.context["request"].user
+        UserChangePasswordService().change_password(user, validated_data["password"])
 
         return user
 
     def update(self, instance, validated_data):
-        raise NotImplementedError()
+        raise NotImplementedError
 
     def to_representation(self, instance):  # pylint: disable=unused-argument
-        return {'detail': _('The password has been changed successfully')}
+        return {"detail": _("The password has been changed successfully")}

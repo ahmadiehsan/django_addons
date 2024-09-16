@@ -6,10 +6,10 @@ class StandardResponse:
 
     def generate_body(self):
         return {
-            'is_successful': self.is_successful,
-            'status_code': self.status_code,
-            'result': self._get_result(),
-            'errors': self._get_errors(),
+            "is_successful": self.is_successful,
+            "status_code": self.status_code,
+            "result": self._get_result(),
+            "errors": self._get_errors(),
         }
 
     def _get_result(self):

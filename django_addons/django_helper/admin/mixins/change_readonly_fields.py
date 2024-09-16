@@ -3,7 +3,7 @@ class ChangeReadonlyFieldsMixin:
 
     def get_change_readonly_fields(self):
         if not self.change_readonly_fields:
-            raise Exception(f'{self.__class__.__name__} must contain `change_readonly_fields` attribute')
+            raise Exception(f"{self.__class__.__name__} must contain `change_readonly_fields` attribute")
 
         return self.change_readonly_fields
 

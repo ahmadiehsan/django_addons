@@ -8,7 +8,7 @@ from django_addons.user_management.serializers.permission.crud import Permission
 
 class PermissionCRUDView(mixins.RetrieveModelMixin, mixins.ListModelMixin, GenericViewSet):
     serializer_class = PermissionCRUDSerializer
-    permission_classes = USER_MANAGEMENT_OPTIONS.apis['permission']['crud']['permission_classes']
+    permission_classes = USER_MANAGEMENT_OPTIONS.apis["permission"]["crud"]["permission_classes"]
 
     def get_queryset(self):
         return Permission.objects.all()

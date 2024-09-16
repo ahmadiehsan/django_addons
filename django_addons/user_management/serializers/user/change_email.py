@@ -11,16 +11,16 @@ User = get_user_model()
 class UserChangeEmailSerializer(CurrentPasswordSerializerMixin, serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('email',) + CurrentPasswordSerializerMixin.Meta.fields
+        fields = ("email",) + CurrentPasswordSerializerMixin.Meta.fields
 
     def create(self, validated_data):
-        user = self.context['request'].user
-        UserChangeEmailService().request_for_email_change(user, validated_data['email'])
+        user = self.context["request"].user
+        UserChangeEmailService().request_for_email_change(user, validated_data["email"])
 
         return user
 
     def update(self, instance, validated_data):
-        raise NotImplementedError()
+        raise NotImplementedError
 
     def to_representation(self, instance):  # pylint: disable=unused-argument
-        return {'detail': _('Confirmation email sent')}
+        return {"detail": _("Confirmation email sent")}

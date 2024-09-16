@@ -8,7 +8,7 @@ from django_addons.user_management.serializers.group.assignment import GroupAssi
 
 class GroupAssignmentView(mixins.UpdateModelMixin, GenericViewSet):
     serializer_class = GroupAssignmentSerializer
-    permission_classes = USER_MANAGEMENT_OPTIONS.apis['group']['assignment']['permission_classes']
+    permission_classes = USER_MANAGEMENT_OPTIONS.apis["group"]["assignment"]["permission_classes"]
 
     def get_queryset(self):
         return UserQueryRepository.all_except_inactive_ones()

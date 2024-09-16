@@ -8,7 +8,7 @@ from django_addons.user_management.serializers.verification_code.crud import Ver
 
 class VerificationCodeCRUDView(mixins.RetrieveModelMixin, mixins.ListModelMixin, GenericViewSet):
     serializer_class = VerificationCodeCRUDSerializer
-    permission_classes = USER_MANAGEMENT_OPTIONS.apis['verification_code']['crud']['permission_classes']
+    permission_classes = USER_MANAGEMENT_OPTIONS.apis["verification_code"]["crud"]["permission_classes"]
 
     def get_queryset(self):
         return VerificationCode.objects.all()

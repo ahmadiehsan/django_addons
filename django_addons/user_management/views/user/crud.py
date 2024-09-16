@@ -13,7 +13,7 @@ class UserCRUDView(
     mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin, mixins.ListModelMixin, GenericViewSet
 ):
     serializer_class = UserCRUDSerializer
-    permission_classes = USER_MANAGEMENT_OPTIONS.apis['user']['crud']['permission_classes']
+    permission_classes = USER_MANAGEMENT_OPTIONS.apis["user"]["crud"]["permission_classes"]
 
     def get_queryset(self):
         return UserQueryRepository.all()

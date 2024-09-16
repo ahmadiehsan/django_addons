@@ -21,7 +21,7 @@ class IOptionStrategy(ABC):
     def _get_nested_key_from_dict(cls, nested_dict, nested_key):
         source_dict = nested_dict
 
-        for key in nested_key.split('.'):
+        for key in nested_key.split("."):
             lookup_key = key
             source_dict = source_dict[lookup_key]
 

@@ -7,4 +7,4 @@ from django_addons.user_management.serializers.user.change_password import UserC
 
 class UserChangePasswordView(OKModelMixin, GenericViewSet):
     serializer_class = UserChangePasswordSerializer
-    permission_classes = USER_MANAGEMENT_OPTIONS.apis['user']['change_password']['permission_classes']
+    permission_classes = USER_MANAGEMENT_OPTIONS.apis["user"]["change_password"]["permission_classes"]

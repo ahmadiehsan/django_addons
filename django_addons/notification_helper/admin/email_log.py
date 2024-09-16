@@ -9,10 +9,10 @@ from django_addons.notification_helper.models import EmailLog
 @register(EmailLog)
 class EmailLogAdmin(BaseAdmin):
     inlines = [EmailRecipientLogInline]
-    exclude = ['html_message']
+    exclude = ["html_message"]
 
     def get_fields(self, request, obj=None):
-        return super().get_fields(request, obj) + ['html_message_parsed']
+        return super().get_fields(request, obj) + ["html_message_parsed"]
 
     @staticmethod
     def html_message_parsed(obj: EmailLog):

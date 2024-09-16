@@ -1,0 +1,5 @@
+Django>=4.1.4,<5.0.0
+djangorestframework>=3.14.0,<4.0.0
+djangorestframework-simplejwt>=5.2.2,<6.0.0
+drf-spectacular>=0.25.1,<1.0.0
+

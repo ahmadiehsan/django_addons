@@ -10,6 +10,6 @@ def custom_exception_handler(exc, context):
 
     # Now log the 400 error reason
     if response is not None and response.status_code == status.HTTP_400_BAD_REQUEST:
-        logging.warning('Bad request %s: %s', context['request'].path, response.data)
+        logging.warning("Bad request %s: %s", context["request"].path, response.data)
 
     return response

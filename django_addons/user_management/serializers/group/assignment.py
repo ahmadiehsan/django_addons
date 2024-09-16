@@ -8,12 +8,12 @@ User = get_user_model()
 
 class GroupAssignmentSerializer(serializers.ModelSerializer):
     group_ids = serializers.PrimaryKeyRelatedField(
-        source='groups', many=True, write_only=True, queryset=Group.objects.all()
+        source="groups", many=True, write_only=True, queryset=Group.objects.all()
     )
 
     class Meta:
         model = User
-        fields = ('group_ids',)
+        fields = ("group_ids",)
 
     def to_representation(self, instance):  # pylint: disable=unused-argument
-        return {'detail': _('The groups have been assigned successfully')}
+        return {"detail": _("The groups have been assigned successfully")}

@@ -12,13 +12,13 @@ class APIsOptionBuilder:
     ):
         self._apis.setdefault(section_name, {}).setdefault(api_name, {})
 
-        self._apis[section_name][api_name]['is_active'] = self._get(
-            f'apis.{section_name}.{api_name}.is_active', is_active_default_value
+        self._apis[section_name][api_name]["is_active"] = self._get(
+            f"apis.{section_name}.{api_name}.is_active", is_active_default_value
         )
 
         if permission_classes_default_value:
-            self._apis[section_name][api_name]['permission_classes'] = self._list_of_str_to_list_of_class(
-                self._get(f'apis.{section_name}.{api_name}.permission_classes', permission_classes_default_value)
+            self._apis[section_name][api_name]["permission_classes"] = self._list_of_str_to_list_of_class(
+                self._get(f"apis.{section_name}.{api_name}.permission_classes", permission_classes_default_value)
             )
 
     def get_result(self):
@@ -36,73 +36,73 @@ class APIsOptionBuilder:
 
 class APIsOptionStrategy(IOptionStrategy):
     def fill_options(self):
-        is_authenticated_perm = 'rest_framework.permissions.IsAuthenticated'
+        is_authenticated_perm = "rest_framework.permissions.IsAuthenticated"
         django_model_full_perm = (
-            'apps.django_helper.drf.permissions.django_model_full_permissions.DjangoModelFullPermissions'
+            "apps.django_helper.drf.permissions.django_model_full_permissions.DjangoModelFullPermissions"
         )
-        can_add_user_perm = 'apps.user_management.permissions.user.crud.CanAddUserPermission'
+        can_add_user_perm = "apps.user_management.permissions.user.crud.CanAddUserPermission"
 
         builder = APIsOptionBuilder(self._get)
-        builder.add_api(section_name='user', api_name='login', is_active_default_value=True)
+        builder.add_api(section_name="user", api_name="login", is_active_default_value=True)
         builder.add_api(
-            section_name='user',
-            api_name='change_email',
+            section_name="user",
+            api_name="change_email",
             is_active_default_value=True,
             permission_classes_default_value=[is_authenticated_perm],
         )
         builder.add_api(
-            section_name='user',
-            api_name='change_password',
+            section_name="user",
+            api_name="change_password",
             is_active_default_value=True,
             permission_classes_default_value=[is_authenticated_perm],
         )
         builder.add_api(
-            section_name='user',
-            api_name='crud',
+            section_name="user",
+            api_name="crud",
             is_active_default_value=True,
             permission_classes_default_value=[django_model_full_perm],
         )
         builder.add_api(
-            section_name='user',
-            api_name='search',
+            section_name="user",
+            api_name="search",
             is_active_default_value=True,
             permission_classes_default_value=[is_authenticated_perm],
         )
-        builder.add_api(section_name='user', api_name='forgot_password', is_active_default_value=True)
+        builder.add_api(section_name="user", api_name="forgot_password", is_active_default_value=True)
         builder.add_api(
-            section_name='user',
-            api_name='invitation',
+            section_name="user",
+            api_name="invitation",
             is_active_default_value=True,
             permission_classes_default_value=[is_authenticated_perm],
         )
-        builder.add_api(section_name='user', api_name='registration', is_active_default_value=True)
+        builder.add_api(section_name="user", api_name="registration", is_active_default_value=True)
         builder.add_api(
-            section_name='group',
-            api_name='crud',
+            section_name="group",
+            api_name="crud",
             is_active_default_value=True,
             permission_classes_default_value=[django_model_full_perm],
         )
         builder.add_api(
-            section_name='group',
-            api_name='assignment',
+            section_name="group",
+            api_name="assignment",
             is_active_default_value=True,
             permission_classes_default_value=[can_add_user_perm],
         )
         builder.add_api(
-            section_name='permission',
-            api_name='crud',
+            section_name="permission",
+            api_name="crud",
             is_active_default_value=True,
             permission_classes_default_value=[django_model_full_perm],
         )
         builder.add_api(
-            section_name='permission',
-            api_name='assignment',
+            section_name="permission",
+            api_name="assignment",
             is_active_default_value=True,
             permission_classes_default_value=[can_add_user_perm],
         )
         builder.add_api(
-            section_name='verification_code',
-            api_name='crud',
+            section_name="verification_code",
+            api_name="crud",
             is_active_default_value=True,
             permission_classes_default_value=[django_model_full_perm],
         )

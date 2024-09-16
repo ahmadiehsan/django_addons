@@ -6,9 +6,9 @@ from django_addons.notification_helper.models import EmailLog
 
 
 class EmailRecipientLog(AbstractBaseModel):
-    email_log = models.ForeignKey(EmailLog, verbose_name=_('Recipient'), on_delete=models.CASCADE)
-    recipient = models.EmailField(_('Recipient'))
+    email_log = models.ForeignKey(EmailLog, verbose_name=_("Recipient"), on_delete=models.CASCADE)
+    recipient = models.EmailField(_("Recipient"))
 
     class Meta(AbstractBaseModel.Meta):
-        verbose_name = _('Email Recipient Log')
-        verbose_name_plural = _('Email Recipient Logs')
+        verbose_name = _("Email Recipient Log")
+        verbose_name_plural = _("Email Recipient Logs")

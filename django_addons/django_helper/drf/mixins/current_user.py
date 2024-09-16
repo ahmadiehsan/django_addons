@@ -1,8 +1,8 @@
 class CurrentUserMixin:
     lookup_field = None
-    lookup_url_kwarg = 'identifier'
+    lookup_url_kwarg = "identifier"
 
-    main_lookup_field = 'pk'
+    main_lookup_field = "pk"
 
     def get_object(self):
         if self._check_to_return_current_user():
@@ -14,4 +14,4 @@ class CurrentUserMixin:
     def _check_to_return_current_user(self):
         lookup_url_kwarg = self.lookup_url_kwarg or self.lookup_field
 
-        return self.kwargs[lookup_url_kwarg] == 'me'
+        return self.kwargs[lookup_url_kwarg] == "me"

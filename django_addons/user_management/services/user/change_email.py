@@ -38,15 +38,15 @@ class UserChangeEmailService:
             action=VerificationCode.Action.EMAIL_CHANGE,
             expires_at=timezone.now() + timedelta(days=1),
             is_for=VerificationCode.IsFor.EMAIL,
-            additional_data={'new_email': new_email},
+            additional_data={"new_email": new_email},
         )
         verification_code = self.verification_code_command_repository.create(verification_code_model)
 
         return verification_code.code
 
     def _send_email(self, email, code):
-        subject = _('Email Verification')
+        subject = _("Email Verification")
         html_message, plain_message = self.email_template_service.render(
-            'user_management/email_change_email.html', {'verification_code': code}
+            "user_management/email_change_email.html", {"verification_code": code}
         )
         self.email_service.send(self.email_service.SendDTO(subject, html_message, plain_message, [email]))

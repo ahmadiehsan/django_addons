@@ -53,7 +53,7 @@ class UserRegistrationService:
             first_name=dto.first_name,
             last_name=dto.last_name,
             is_active=False,
-            **dto.additional_fields
+            **dto.additional_fields,
         )
         user = self.user_command_repository.create(user_model, dto.password)
 
@@ -72,8 +72,8 @@ class UserRegistrationService:
         return verification_code.code
 
     def _send_email(self, email, code):
-        subject = _('Account Verification')
+        subject = _("Account Verification")
         html_message, plain_message = self.email_template_service.render(
-            'user_management/email_verification.html', {'verification_code': code}
+            "user_management/email_verification.html", {"verification_code": code}
         )
         self.email_service.send(self.email_service.SendDTO(subject, html_message, plain_message, [email]))

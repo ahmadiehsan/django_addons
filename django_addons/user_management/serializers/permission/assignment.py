@@ -8,12 +8,12 @@ User = get_user_model()
 
 class PermissionAssignmentSerializer(serializers.ModelSerializer):
     permission_ids = serializers.PrimaryKeyRelatedField(
-        source='user_permissions', many=True, write_only=True, queryset=Permission.objects.all()
+        source="user_permissions", many=True, write_only=True, queryset=Permission.objects.all()
     )
 
     class Meta:
         model = User
-        fields = ('permission_ids',)
+        fields = ("permission_ids",)
 
     def to_representation(self, instance):  # pylint: disable=unused-argument
-        return {'detail': _('The permissions have been assigned successfully')}
+        return {"detail": _("The permissions have been assigned successfully")}

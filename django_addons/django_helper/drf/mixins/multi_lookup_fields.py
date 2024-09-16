@@ -5,7 +5,7 @@ class MultiLookUpFieldsMixin:
     # pylint: disable=inconsistent-return-statements
 
     lookup_field = None
-    lookup_url_kwarg = 'identifier'
+    lookup_url_kwarg = "identifier"
 
     lookup_fields = ()
 

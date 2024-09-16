@@ -8,7 +8,7 @@ from django_addons.user_management.serializers.permission.assignment import Perm
 
 class PermissionAssignmentView(mixins.UpdateModelMixin, GenericViewSet):
     serializer_class = PermissionAssignmentSerializer
-    permission_classes = USER_MANAGEMENT_OPTIONS.apis['permission']['assignment']['permission_classes']
+    permission_classes = USER_MANAGEMENT_OPTIONS.apis["permission"]["assignment"]["permission_classes"]
 
     def get_queryset(self):
         return UserQueryRepository.all_except_inactive_ones()

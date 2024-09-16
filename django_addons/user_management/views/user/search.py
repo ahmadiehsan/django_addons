@@ -13,10 +13,10 @@ User = get_user_model()
 
 class UserSearchView(MultiLookUpFieldsMixin, mixins.RetrieveModelMixin, GenericViewSet):
     serializer_class = UserMinimalSerializer
-    permission_classes = USER_MANAGEMENT_OPTIONS.apis['user']['search']['permission_classes']
+    permission_classes = USER_MANAGEMENT_OPTIONS.apis["user"]["search"]["permission_classes"]
 
-    lookup_fields = ('username', 'email')
-    lookup_value_regex = r'[^/]+'  # for accepting email address as a lookup field
+    lookup_fields = ("username", "email")
+    lookup_value_regex = r"[^/]+"  # for accepting email address as a lookup field
 
     def get_queryset(self):
         return UserQueryRepository.all_except_inactive_ones()

@@ -15,7 +15,7 @@ class VerificationCodeCommandRepository:
             verification_code.additional_data = json.dumps(verification_code.additional_data)
 
         verification_code.save()
-        logging.info('A verification code was generated: %s', verification_code)
+        logging.info("A verification code was generated: %s", verification_code)
 
         return verification_code
 
